@@ -91,6 +91,43 @@
     #frase.visible {
       opacity: 1;
     }
+
+    .boton-corazon {
+      font-size: 3em;
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin: 10px;
+      transition: transform 0.2s ease;
+      animation: latido 1.2s infinite;
+    }
+
+    .boton-corazon:hover {
+      transform: scale(1.2);
+    }
+
+    .boton-pausa {
+      font-size: 2.5em;
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin: 10px;
+      transition: transform 0.2s ease;
+      color: #ffb6c1;
+    }
+
+    .boton-pausa:hover {
+      transform: scale(1.1);
+    }
+
+    @keyframes latido {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.2);
+      }
+    }
   </style>
 </head>
 <body>
@@ -113,6 +150,15 @@
 
   <button class="boton-frase" onclick="mostrarFrase()">Haz clic para leer una frase bonita ✨</button>
   <div id="frase"></div>
+
+  <!-- Reproductor de audio -->
+  <audio id="audio" src="https://raw.githubusercontent.com/lui2oo/teamoayleenvalerialeonhernandez/main/ifellinlove_sample.mp3" preload="auto"></audio>
+
+  <!-- Botón para reproducir canción -->
+  <button class="boton-corazon" onclick="document.getElementById('audio').play()">❤️</button>
+
+  <!-- Botón para pausar canción -->
+  <button class="boton-pausa" onclick="document.getElementById('audio').pause()">🖤</button>
 
   <script>
     // Contadores
@@ -153,14 +199,9 @@
       setTimeout(() => {
         fraseDiv.textContent = frases[indice];
         fraseDiv.classList.add("visible");
-      }, 100); // un pequeño delay para reiniciar la animación
+      }, 100);
     }
   </script>
-<audio id="audio" src="https://raw.githubusercontent.com/lui2oo/teamoayleenvalerialeonhernandez/main/ifellinlove_sample.mp3" preload="auto"></audio>
-
-<button class="boton-frase" onclick="document.getElementById('audio').play()">
-  💖 Reproducir nuestra canción: "I Fell in Love in October"
-</button>
 
 </body>
 </html>
