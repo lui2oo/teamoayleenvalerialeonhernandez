@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Te amo Ayleen Valeria León Hernández</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Georgia', cursive;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: linear-gradient(to right, #ffddee 50%, #1a1a1a 50%);
+      color: #fff;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 20px;
+      font-size: 2.5em;
+      color: #ffb6c1;
+      text-shadow: 2px 2px 5px #000;
+    }
+
+    .contador {
+      background-color: rgba(0, 0, 0, 0.8);
+      border: 2px solid #ffb6c1;
+      border-radius: 15px;
+      padding: 20px;
+      margin: 10px;
+      width: 80%;
+      max-width: 500px;
+      font-size: 1.2em;
+      text-shadow: 1px 1px 3px #000;
+    }
+
+    .contador span {
+      font-weight: bold;
+      color: #ff69b4;
+    }
+
+    .carta {
+      background-color: #fce4ec;
+      border-radius: 15px;
+      padding: 25px;
+      margin: 20px;
+      width: 90%;
+      max-width: 600px;
+      font-style: italic;
+      color: #4a0033;
+      line-height: 1.6;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    }
+
+    .boton-frase {
+      margin: 20px;
+      padding: 10px 20px;
+      border-radius: 10px;
+      background-color: #ffb6c1;
+      color: #1a1a1a;
+      font-size: 1em;
+      border: none;
+      cursor: pointer;
+      box-shadow: 2px 2px 5px #000;
+      transition: transform 0.2s ease;
+    }
+
+    .boton-frase:hover {
+      transform: scale(1.05);
+    }
+
+    #frase {
+      margin: 20px;
+      padding: 15px;
+      background-color: #fff0f5;
+      border: 2px solid #ffb6c1;
+      border-radius: 15px;
+      font-style: italic;
+      font-size: 1.2em;
+      color: #4a0033;
+      text-align: center;
+      max-width: 600px;
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+    }
+
+    #frase.visible {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Te amo Mi vida</h1>
+
+  <div class="contador" id="contador60ella"></div>
+  <div class="contador" id="contador60luis"></div>
+  <div class="contador" id="contador40juntos"></div>
+
+  <div class="carta">
+    Amor mío, Ayleen...<br><br>
+    Cada día contigo es un regalo, una historia escrita con ternura, sonrisas y sueños.<br>
+    Esta página es solo un pequeño rincón donde quiero guardar el infinito que eres para mí.<br>
+    No importa cuánto tiempo pase, yo voy a seguir amándote como hoy, como siempre.<br>
+    Contando los días para celebrar cada etapa contigo.<br><br>
+    Feliz vida a tu lado.<br>
+    Tu Luisito ♡
+  </div>
+
+  <button class="boton-frase" onclick="mostrarFrase()">Haz clic para leer una frase bonita ✨</button>
+  <div id="frase"></div>
+
+  <script>
+    // Contadores
+    function calcularTiempo(id, fechaMeta, descripcion) {
+      const destino = new Date(fechaMeta).getTime();
+      setInterval(() => {
+        const ahora = new Date().getTime();
+        const diferencia = destino - ahora;
+        const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+        const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+        const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+        document.getElementById(id).innerHTML =
+          `<span>${descripcion}:</span><br> ${dias} días, ${horas} horas, ${minutos} minutos, ${segundos} segundos`;
+      }, 1000);
+    }
+
+    calcularTiempo("contador60ella", "2067-07-10T00:00:00", "Faltan para que Ayleen cumpla 60 años");
+    calcularTiempo("contador60luis", "2066-12-22T00:00:00", "Faltan para que Luis cumpla 60 años");
+    calcularTiempo("contador40juntos", "2062-09-07T00:00:00", "Faltan para cumplir 40 años juntos");
+
+    // Frases bonitas
+    const frases = [
+      "Amarte es lo más bonito que me ha pasado 💘",
+      "Tú eres mi razón de sonreír cada día 🌸",
+      "Te amo más que ayer y menos que mañana 💞",
+      "Nuestro amor es infinito, como el cielo de tus ojitos ✨",
+      "Si tuviera que volver a empezar, te elegiría otra vez 💌",
+      "Contigo el tiempo no se cuenta, se disfruta 💖",
+      "Eres mi lugar favorito en el mundo 🌍💕",
+      "Un segundo contigo vale más que mil sin ti ⏳"
+    ];
+
+    function mostrarFrase() {
+      const indice = Math.floor(Math.random() * frases.length);
+      const fraseDiv = document.getElementById("frase");
+      fraseDiv.classList.remove("visible");
+      setTimeout(() => {
+        fraseDiv.textContent = frases[indice];
+        fraseDiv.classList.add("visible");
+      }, 100); // un pequeño delay para reiniciar la animación
+    }
+  </script>
+
+</body>
+</html>
